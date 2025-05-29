@@ -3,6 +3,31 @@ public class EncapsulatedAccount {
     private String accountOwner;
     private double balance;
 
+    public EncapsulatedAccount(String accountNumber, String accountOwner, double balance) {
+        //CONTRUTOR QUE CHAMA CONSTRUTOR, MAIS GENÉRICO
+        this.accountNumber = accountNumber;
+        this.accountOwner = accountOwner;
+        this.balance = balance;
+    }
+
+    public EncapsulatedAccount(String accountNumber) {//DEVE TER O MESMO NOME DA CLASSE
+        //AGORA O JAVA NÃO TEM MAIS O CONSTRUTOR PADRÃO (VAZIO), ENTÃO NA CRIAÇÃO DO OBJETO, O ACCOUNTNUMBER DEVERÁ SER PASSADO
+        //this.accountNumber = accountNumber; -> ANTES DO CONSTRUTOR CHAMAR OUTRO CONSTRUTOR
+        this(accountNumber, null, 0);
+    }
+
+    public EncapsulatedAccount(String accountNumber, String accountOwner) {
+        //this.accountNumber = accountNumber;
+        //this.accountOwner = accountOwner; -> ANTES DO CONSTRUTOR CHAMAR OUTRO CONSTRUTOR
+        this(accountNumber, accountOwner, 0);
+    }
+
+    public EncapsulatedAccount(String accountNumber, double balance) {
+        //this.accountNumber = accountNumber;
+        //this.balance = balance;
+        this(accountNumber, null, balance);
+    }
+
     boolean deposit(double amount) { //AQUI VAI RETORNAR UM BOLEANO AO TERMINAR A FUNÇÃO
         if (amount > 0) {
             balance += amount;
